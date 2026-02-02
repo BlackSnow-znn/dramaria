@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Maria | Advocacia Estratégica</title>
+    <meta name="description" content="Advocacia especializada em [Área de Atuação - ex: Direito Digital, Empresarial]. Atendimento personalizado com foco em resultados para seus desafios legais.">
+    <meta name="keywords" content="advogada, direito, advocacia, [área de atuação], consulta jurídica, Maria advogada">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="https://via.placeholder.com/32x32/104c4f/ffffff?text=M" type="image/png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-emerald: #104c4f; /* Verde Esmeralda Escuro */
+            --secondary-gold: #D4AF37; /* Dourado */
+            --light-beige: #F5F5DC;    /* Bege Claro */
+            --dark-background: #0D0D0D; /* Fundo Ultra Escuro */
+            --text-light: #E0E0E0;      /* Texto Claro */
+            --text-dark: #333333;       /* Texto Escuro */
+            --accent-glow: rgba(212, 175, 55, 0.4); /* Brilho dourado para botões */
+            --emerald-glow: rgba(16, 76, 79, 0.4); /* Brilho esmeralda */
+            --transition-main: all 0.4s ease-in-out;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-background);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-display {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary-gold);
+        }
+
+        /* Scrollbar Personalizado */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--dark-background); }
+        ::-webkit-scrollbar-thumb { background: var(--primary-emerald); border-radius: 10px; }
+
+        /* Estilo da Navbar */
+        .navbar-link {
+            position: relative;
+            color: var(--text-light);
+            transition: var(--transition-main);
+        }
+        .navbar-link:hover {
+            color: var(--secondary-gold);
+        }
+        .navbar-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-gold);
+            transition: width 0.3s ease-out;
+        }
+        .navbar-link:hover::after, .navbar-link.nav-active::after {
+            width: 100%;
+        }
+        .navbar-link.nav-active {
+            color: var(--secondary-gold);
+            font-weight: 700;
+        }
+
+        /* Botões Estilizados */
+        .btn-gold-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border: 2px solid var(--secondary-gold);
+            color: var(--secondary-gold);
+            background-color: transparent;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-main);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn-gold-outline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: var(--secondary-gold);
+            transition: all 0.5s ease-in-out;
+            z-index: -1;
+        }
+        .btn-gold-outline:hover {
+            color: var(--dark-background);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        .btn-gold-outline:hover::before {
+            left: 0;
+        }
+
+        .btn-emerald-fill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            background-color: var(--primary-emerald);
+            color: var(--light-beige);
+            border: 2px solid var(--primary-emerald);
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-main);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn-emerald-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease-out;
+            z-index: -1;
+        }
+        .btn-emerald-fill:hover {
+            background-color: darken(var(--primary-emerald), 10%); /* Escurece um pouco */
+            box-shadow: 0 0 20px var(--emerald-glow);
+        }
+        .btn-emerald-fill:hover::after {
+            opacity: 1;
+        }
+        /* Animação para ícone dentro do botão */
+        .btn-emerald-fill:hover i {
+            transform: translateX(5px);
+            transition: transform 0.3s ease-out;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark-background) 0%, rgba(16, 76, 79, 0.2) 100%);
+            padding-top: 120px; /* Ajusta para a navbar fixa */
+        }
+        .hero-img {
+            border-radius: 10px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 60px var(--emerald-glow);
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .hero-img:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--dark-background);
+        }
+        .about-text h2 {
+            position: relative;
+            display: inline-block;
+        }
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: var(--secondary-gold);
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: var(--transition-main);
+        }
+        .faq-item:hover {
+            border-color: var(--secondary-gold);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.15);
+            transform: translateY(-5px);
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: var(--transition-main);
+        }
+        .faq-question:hover {
+            color: var(--secondary-gold);
+        }
+        .faq-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease-out;
+            color: var(--secondary-gold);
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg); /* Gira para fazer um 'X' */
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 25px;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out, opacity 0.5s ease-out;
+            opacity: 0;
+            color: var(--text-light);
+            background-color: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px; /* Altura máxima para a animação */
+            padding: 15px 25px 25px;
+            opacity: 1;
+        }
+
+        /* Botão WhatsApp */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366; /* Verde WhatsApp original */
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            animation: pulse-whatsapp 2s infinite;
+            transition: transform 0.3s ease-in-out;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.6);
+        }
+        @keyframes pulse-whatsapp {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Footer */
+        .footer-link {
+            transition: var(--transition-main);
+            color: var(--text-light);
+        }
+        .footer-link:hover {
+            color: var(--secondary-gold);
+            transform: translateX(5px);
+        }
+        .social-icon {
+            transition: var(--transition-main);
+            color: var(--light-beige);
+        }
+        .social-icon:hover {
+            color: var(--secondary-gold);
+            transform: translateY(-5px) scale(1.1);
+            filter: drop-shadow(0 0 10px var(--accent-glow));
+        }
+
+        /* Partículas de fundo (opcional, pode ser pesado) */
+        .particle {
+            position: absolute;
+            background: var(--secondary-gold);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: particle-fade 3s ease-out forwards;
+            filter: blur(2px);
+        }
+        @keyframes particle-fade {
+            0% { transform: scale(0); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+.mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+}
+
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero-section { padding-top: 80px; }
+            h1 { font-size: 2.5rem !important; line-height: 1.2; }
+            h2 { font-size: 2rem !important; }
+            .btn-gold-outline, .btn-emerald-fill { padding: 10px 20px; font-size: 0.8rem; }
+            .whatsapp-btn { width: 50px; height: 50px; font-size: 24px; bottom: 20px; right: 20px; }
+        }
+
+/* --- 1. Divisões Modernas --- */
+/* Substitua as bordas simples por gradientes sutis */
+section {
+    position: relative;
+    border: none !important; /* Remove a linha branca reta */
+}
+
+section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-emerald), transparent);
+    opacity: 0.3;
+}
+
+/* --- 2. Menu Mobile com Overlay e Blur --- */
+#menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-blur: 8px; /* O efeito de desfoque */
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 40;
+    display: none; /* Escondido por padrão */
+}
+
+.mobile-menu {
+    width: 280px;
+    z-index: 51;
+
+    background: linear-gradient(
+        135deg,
+        #0d0d0d 0%,
+        rgba(16, 76, 79, 0.35) 100%
+    );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-left: 1px solid rgba(212, 175, 55, 0.25);
+
+    box-shadow:
+        -10px 0 40px rgba(0,0,0,0.6),
+        -5px 0 60px rgba(16, 76, 79, 0.4);
+
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+}
+
+
+/* --- 3. Ícones do Desenvolvedor --- */
+.dev-social-link {
+    color: #50C878; /* Verde Esmeralda */
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.dev-social-link:hover {
+    transform: translateY(-3px) scale(1.2);
+    filter: drop-shadow(0 0 8px #50C878);
+}
+
+.mobile-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 16px 28px;
+
+    color: var(--text-light);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+
+    position: relative;
+    transition: all 0.35s ease;
+}
+
+.mobile-link i {
+    color: var(--secondary-gold);
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.mobile-link::after {
+    content: '';
+    position: absolute;
+    left: 28px;
+    bottom: 8px;
+    width: 0;
+    height: 2px;
+    background: var(--secondary-gold);
+    transition: width 0.35s ease;
+}
+
+.mobile-link:hover {
+    color: var(--secondary-gold);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.mobile-link:hover::after {
+    width: 40%;
+}
+
+    </style>
+</head>
+<body class="bg-dark-background text-text-light">
+
+    <nav class="fixed w-full z-50 bg-dark-background/90 backdrop-blur-md border-b border-primary-emerald/20 shadow-lg" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-display font-bold text-secondary-gold hover:text-light-beige transition-colors">Dra. Maria</a>
+            
+            <div class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wide">
+<a href="#hero" class="mobile-link">
+    <i class="fas fa-home"></i> Início
+</a>
+<a href="#sobre" class="mobile-link">
+    <i class="fas fa-user-tie"></i> Sobre Mim
+</a>
+<a href="#servicos" class="mobile-link">
+    <i class="fas fa-scale-balanced"></i> Serviços
+</a>
+<a href="#faq" class="mobile-link">
+    <i class="fas fa-circle-question"></i> FAQ
+</a>
+<a href="#contato" class="mobile-link">
+    <i class="fas fa-envelope-open-text"></i> Contato
+</a>
+
+            </div>
+
+
+<div id="menu-overlay" onclick="closeMenu()"></div>
+
+
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-secondary-gold focus:outline-none focus:ring-2 focus:ring-secondary-gold rounded-md p-2">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+<div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-2/3 h-screen bg-dark-background/95 backdrop-blur-lg border-l border-primary-emerald/20 flex flex-col pt-20 shadow-2xl md:hidden z-50">
+    <a href="#hero" class="navbar-link px-6 py-4">Início</a>
+    <a href="#sobre" class="navbar-link px-6 py-4">Sobre Mim</a>
+    <a href="#servicos" class="navbar-link px-6 py-4">Serviços</a>
+    <a href="#faq" class="navbar-link px-6 py-4">FAQ</a>
+    <a href="#contato" class="navbar-link px-6 py-4">Contato</a>
+
+    <button id="close-mobile-menu" class="absolute top-4 right-4 text-secondary-gold">
+        <i class="fas fa-times text-xl"></i>
+    </button>
+</div>
+
+    </nav>
+
+    <a href="https://wa.me/SEU_NUMERO_WHATSAPP" target="_blank" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <section id="hero" class="hero-section min-h-screen flex items-center py-20 md:py-0">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1 text-center md:text-left" data-aos="fade-right" data-aos-duration="1000">
+                <p class="text-secondary-gold text-lg mb-4 font-semibold uppercase tracking-wider">Advocacia com Excelência</p>
+                <h1 class="text-4xl lg:text-6xl font-display leading-tight text-light-beige mb-6">
+                    Sua Parceira Confiável <br>em Questões Jurídicas.
+                </h1>
+                <p class="text-light-beige opacity-80 mb-8 max-w-lg mx-auto md:mx-0">
+                    Com vasta experiência e paixão pela justiça, a Dra. Maria oferece soluções jurídicas personalizadas e eficientes para cada cliente. Sua segurança é nossa prioridade.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-5">
+                    <a href="#contato" class="btn-gold-outline">
+                        Entrar em Contato <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#servicos" class="btn-emerald-fill">
+                        Nossos Serviços <i class="fas fa-chevron-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 flex justify-center md:justify-end" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <img src="https://storage.alboom.ninja/sites/85871/albuns/1357726/reliv_advs_mar24_-20.jpg?t=1718376872" alt="Dra. Maria - Advogada" class="hero-img w-full max-w-md h-auto object-cover">
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="about-section py-20 md:py-28 bg-light-beige/[0.03] border-t border-b border-primary-emerald/10">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="flex justify-center md:justify-start" data-aos="fade-right" data-aos-duration="1000">
+                <img src="https://storage.alboom.ninja/sites/85871/albuns/1357726/reliv_advs_mar24_-20.jpg?t=1718376872" alt="Experiência Jurídica" class="hero-img w-full max-w-md h-auto object-cover">
+            </div>
+            <div class="about-text text-center md:text-left" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <h2 class="text-4xl font-display font-bold text-secondary-gold mb-8">
+                    Sobre Mim
+                </h2>
+                <p class="text-text-light mb-6 text-lg">
+                    Com uma década de dedicação ao Direito, Dra. Maria é uma profissional reconhecida por sua abordagem estratégica e comprometimento inabalável com os interesses de seus clientes. Formada pela renomada Universidade [Nome da Universidade] e com especialização em [Área de Especialização], ela combina profundo conhecimento jurídico com uma visão inovadora para resolver os mais complexos desafios legais.
+                </p>
+                <p class="text-text-light mb-6 opacity-80">
+                    Seu foco é construir relacionamentos sólidos baseados na confiança e transparência, garantindo que cada cliente se sinta compreendido e bem representado. Acreditamos que a advocacia vai além das leis; trata-se de pessoas e seus futuros.
+                </p>
+                <a href="#contato" class="btn-emerald-fill mt-4">
+                    Conheça mais <i class="fas fa-angle-double-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="py-20 md:py-28">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-display font-bold text-secondary-gold mb-12" data-aos="fade-up">Nossos Serviços</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="bg-light-beige/[0.05] p-8 rounded-xl border border-primary-emerald/20 hover:border-secondary-gold transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-secondary-gold/10" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-gavel text-5xl text-primary-emerald mb-6 group-hover:text-secondary-gold transition-colors"></i>
+                    <h3 class="font-display text-2xl font-semibold text-secondary-gold mb-4">Direito Empresarial</h3>
+                    <p class="text-text-light opacity-80">Assessoria completa para empresas, desde a formação até a resolução de litígios complexos.</p>
+                </div>
+                <div class="bg-light-beige/[0.05] p-8 rounded-xl border border-primary-emerald/20 hover:border-secondary-gold transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-secondary-gold/10" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-shield-alt text-5xl text-primary-emerald mb-6 group-hover:text-secondary-gold transition-colors"></i>
+                    <h3 class="font-display text-2xl font-semibold text-secondary-gold mb-4">Direito Civil</h3>
+                    <p class="text-text-light opacity-80">Soluções para disputas contratuais, responsabilidade civil e direitos do consumidor.</p>
+                </div>
+                <div class="bg-light-beige/[0.05] p-8 rounded-xl border border-primary-emerald/20 hover:border-secondary-gold transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-secondary-gold/10" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-laptop-code text-5xl text-primary-emerald mb-6 group-hover:text-secondary-gold transition-colors"></i>
+                    <h3 class="font-display text-2xl font-semibold text-secondary-gold mb-4">Direito Digital</h3>
+                    <p class="text-text-light opacity-80">Proteção de dados, crimes cibernéticos e conformidade com a LGPD para seu negócio online.</p>
+                </div>
+            </div>
+            <a href="#contato" class="btn-gold-outline mt-12 mx-auto">
+                Ver todos os serviços <i class="fas fa-arrow-circle-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 md:py-28 bg-light-beige/[0.03] border-t border-b border-primary-emerald/10">
+        <div class="container mx-auto px-6 text-center max-w-3xl">
+            <h2 class="text-4xl font-display font-bold text-secondary-gold mb-12" data-aos="fade-up">Perguntas Frequentes</h2>
+            
+            <div class="space-y-4">
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-question">
+                        <h3>Como posso agendar uma consulta com a Dra. Maria?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Você pode agendar sua consulta facilmente através do nosso formulário de contato nesta página, ou diretamente pelo WhatsApp. Entraremos em contato em breve para confirmar o horário.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-question">
+                        <h3>Quais são as principais áreas de atuação do escritório?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nosso escritório é especializado em Direito Empresarial, Direito Civil e Direito Digital, oferecendo uma gama completa de serviços para pessoas físicas e jurídicas.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-question">
+                        <h3>O atendimento é presencial ou online?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oferecemos ambas as modalidades de atendimento para sua comodidade. Podemos realizar consultas presenciais em nosso escritório ou através de videochamada, adaptando-nos à sua necessidade.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="faq-question">
+                        <h3>Qual é o custo de uma consulta inicial?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O valor da consulta inicial é 200 reais. Este valor é deduzido caso o cliente opte por prosseguir com os serviços do escritório.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="faq-question">
+                        <h3>Como funciona o processo de contratação dos serviços?</h3>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Após a consulta inicial, onde avaliamos seu caso, apresentamos uma proposta detalhada. Uma vez aprovada, formalizamos o contrato e iniciamos o trabalho com total transparência e comunicação.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-20 md:py-28 bg-dark-background">
+        <div class="container mx-auto px-6 text-center max-w-2xl">
+            <h2 class="text-4xl font-display font-bold text-secondary-gold mb-12" data-aos="fade-up">Entre em Contato</h2>
+            <p class="text-light-beige mb-8 opacity-90" data-aos="fade-up" data-aos-delay="100">
+                Estamos prontos para ouvir seu caso e oferecer a melhor orientação jurídica. Preencha o formulário abaixo ou utilize nossos canais de comunicação.
+            </p>
+
+            <form class="bg-light-beige/[0.05] p-8 md:p-10 rounded-xl border border-primary-emerald/20 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                <div class="mb-6 text-left">
+                    <label for="name" class="block text-secondary-gold text-sm font-bold mb-2">Nome Completo</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-dark-background border border-primary-emerald/30 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-gold text-light-beige" placeholder="Seu nome completo">
+                </div>
+                <div class="mb-6 text-left">
+                    <label for="email" class="block text-secondary-gold text-sm font-bold mb-2">E-mail</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-dark-background border border-primary-emerald/30 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-gold text-light-beige" placeholder="seuemail@exemplo.com">
+                </div>
+                <div class="mb-6 text-left">
+                    <label for="phone" class="block text-secondary-gold text-sm font-bold mb-2">Telefone (WhatsApp)</label>
+                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-dark-background border border-primary-emerald/30 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-gold text-light-beige" placeholder="(XX) XXXXX-XXXX">
+                </div>
+                <div class="mb-6 text-left">
+                    <label for="message" class="block text-secondary-gold text-sm font-bold mb-2">Sua Mensagem</label>
+                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-dark-background border border-primary-emerald/30 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-gold text-light-beige" placeholder="Descreva brevemente seu caso"></textarea>
+                </div>
+<button type="submit" class="btn-emerald-fill w-full py-4 text-lg">
+                    Enviar Mensagem <i class="fas fa-paper-plane ml-2"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-dark-background border-t border-primary-emerald/20 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div data-aos="fade-up">
+                    <a href="#hero" class="text-3xl font-display font-bold text-secondary-gold mb-6 block">Dra. Maria</a>
+                    <p class="text-text-light/70 mb-6 leading-relaxed">
+                        Advocacia estratégica e personalizada. Compromisso com a ética, transparência e a busca incessante pelos direitos de nossos clientes.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon text-2xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon text-2xl"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon text-2xl"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="text-secondary-gold font-bold uppercase tracking-widest mb-6">Mapa do Site</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#hero" class="footer-link block">Início</a></li>
+                        <li><a href="#sobre" class="footer-link block">Sobre a Dra. Maria</a></li>
+                        <li><a href="#servicos" class="footer-link block">Áreas de Atuação</a></li>
+                        <li><a href="#faq" class="footer-link block">Dúvidas Frequentes</a></li>
+                        <li><a href="#contato" class="footer-link block">Agendamento</a></li>
+                    </ul>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="text-secondary-gold font-bold uppercase tracking-widest mb-6">Links Úteis</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="footer-link block">Consulta Processual</a></li>
+                        <li><a href="#" class="footer-link block">Portal da OAB</a></li>
+                        <li><a href="#" class="footer-link block">Política de Privacidade</a></li>
+                        <li><a href="#" class="footer-link block">Termos de Uso</a></li>
+                        <li><a href="#" class="footer-link block">Blog Jurídico</a></li>
+                    </ul>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="text-secondary-gold font-bold uppercase tracking-widest mb-6">Contato</h4>
+                    <ul class="space-y-4 text-text-light/80">
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-secondary-gold mt-1"></i>
+                            <span>Av. Paulista, 1000 - Bela Vista<br>São Paulo - SP, 01310-100</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-phone-alt text-secondary-gold"></i>
+                            <span>(11) 99999-9999</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-secondary-gold"></i>
+                            <span>contato@dramaria.com.br</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+<div class="border-t border-primary-emerald/10 pt-8 flex flex-col justify-center items-center text-sm text-text-light/50">
+    <p>&copy; Este website foi desenvolvido exclusivamente como um projeto demonstrativo para fins de portfólio profissional. Todo o conteúdo apresentado, incluindo nome, imagens, textos e informações, é de caráter fictício e ilustrativo.
+
+O site não pertence, não representa e não possui qualquer vínculo com advogada, escritório de advocacia ou profissional regularmente inscrito na Ordem dos Advogados do Brasil (OAB). As informações aqui exibidas não configuram prestação de serviços jurídicos, orientação legal ou publicidade profissional real.
+
+Qualquer semelhança com pessoas, profissionais ou instituições existentes é mera coincidência.</p>
+    <div class="mt-4 text-center">
+        <p class="mb-2">Website developed by <span class="text-secondary-gold font-bold">Marcos Websites</span></p>
+        <div class="flex space-x-5 justify-center">
+            <a href="https://instagram.com/z4n.fs" target="_blank" class="dev-social-link"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/43996135292" target="_blank" class="dev-social-link"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://marcoswebsites.discloud.app" target="_blank" class="dev-social-link"><i class="fas fa-globe"></i></a>
+        </div>
+    </div>
+</div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicialização do AOS (Animate on Scroll)
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-in-out'
+        });
+
+        // LÓGICA DO FAQ (Acordeão)
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Fecha todos os itens antes de abrir o novo (Abre um e fecha o outro)
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    const icon = otherItem.querySelector('.faq-icon');
+                    icon.classList.replace('fa-minus', 'fa-plus');
+                });
+
+                // Se o clicado não estava ativo, ativa ele
+                if (!isActive) {
+                    item.classList.add('active');
+                    const icon = item.querySelector('.faq-icon');
+                    icon.classList.replace('fa-plus', 'fa-minus');
+                }
+            });
+        });
+
+const mobileMenu = document.getElementById('mobile-menu');
+const overlay = document.getElementById('menu-overlay');
+const openBtn = document.getElementById('mobile-menu-button');
+const closeBtn = document.getElementById('close-mobile-menu');
+
+function openMenu() {
+    mobileMenu.classList.add('open');
+    overlay.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+    mobileMenu.classList.remove('open');
+    overlay.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+openBtn.addEventListener('click', openMenu);
+closeBtn.addEventListener('click', closeMenu);
+
+overlay.addEventListener('click', closeMenu);
+
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
+        // EFEITO NAVBAR NO SCROLL
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-dark-background/95', 'py-2', 'shadow-2xl');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('bg-dark-background/95', 'py-2', 'shadow-2xl');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // EFEITO DE PARTICULAS NOS BOTÕES (Sutil)
+        document.querySelectorAll('.btn-gold-outline, .btn-emerald-fill').forEach(button => {
+            button.addEventListener('mousemove', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const particle = document.createElement('span');
+                particle.classList.add('particle');
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                
+                button.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
+            });
+        });
+
+        // SMOOTH SCROLL PARA LINKS INTERNOS
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
